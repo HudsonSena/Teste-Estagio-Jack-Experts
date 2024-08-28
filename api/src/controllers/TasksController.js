@@ -12,3 +12,5 @@ class TasksController {
     response.json();
   }
 }
+
+module.exports = TasksController;
