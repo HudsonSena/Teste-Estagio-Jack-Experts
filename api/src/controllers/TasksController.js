@@ -55,6 +55,8 @@ class TasksController {
 
     return response.status(200).json();
   }
+  async show(request, response) {}
+  async index(request, resposne) {}
   /*delete(request, response) {
     const { id } = request.params;
     response.json();
