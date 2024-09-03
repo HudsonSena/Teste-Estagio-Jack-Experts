@@ -6,14 +6,13 @@ class TasksController {
     const { user_id } = request.params;
     const { title, description } = request.body;
     const database = await sqliteConnection();
-    const checkUserExist = await database.get(
-      "SELECT * FROM tasks WHERE title = (?)",
-      [title]
+
+    const checkTitleExist = await database.get(
+      "SELECT * FROM tasks WHERE title = (?) AND user_id = (?)",
+      [title, user_id]
     );
 
-    console.log(user_id);
-
-    if (checkUserExist) {
+    if (checkTitleExist) {
       throw new AppError("Título ja cadastrado");
     }
 
@@ -25,7 +24,7 @@ class TasksController {
     return response.status(201).json();
   }
   async update(request, response) {
-    const { title, description } = request.body;
+    const { title, description, user_id } = request.body;
     const { id } = request.params;
     const database = await sqliteConnection();
     const task = await database.get("SELECT * FROM tasks WHERE ID = (?)", [id]);
@@ -35,16 +34,16 @@ class TasksController {
     }
 
     const taskWithUpdatedTitle = await database.get(
-      "SELECT * FROM tasks WHERE title = (?)",
-      [title]
+      "SELECT * FROM tasks WHERE title = (?) AND user_id = (?)",
+      [title, user_id]
     );
 
     if (taskWithUpdatedTitle && taskWithUpdatedTitle.id !== id) {
       throw new AppError("Esta título ja esta em uso");
     }
 
-    task.title = title;
-    task.description = description;
+    task.title = title ?? task.title;
+    task.description = description ?? task.description;
 
     await database.run(
       `UPDATE tasks SET
