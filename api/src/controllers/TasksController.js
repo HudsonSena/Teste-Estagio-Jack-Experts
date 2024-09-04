@@ -25,6 +25,7 @@ class TasksController {
 
     return response.status(201).json();
   }
+
   async update(request, response) {
     const { title, description, user_id } = request.body;
     const { id } = request.params;
@@ -55,14 +56,30 @@ class TasksController {
       [task.title, task.description, id]
     );
 
-    return response.status(200).json();
+    return response.status(202).json();
   }
-  async show(request, response) {}
-  async index(request, resposne) {}
-  /*delete(request, response) {
+
+  async show(request, response) {
     const { id } = request.params;
-    response.json();
-  }*/
+
+    const task = await knex("tasks").where({ id }).first();
+
+    return response.status(202).json({ ...task })
+  }
+
+  async index(request, response) {
+    const { title, user_id } = request.query;
+    const tasks = await knex("tasks").where({ user_id }).whereLike("title", `%${title}%`).orderBy("title");
+
+    return response.status(202).json(tasks);
+  }
+
+  async delete(request, response) {
+    const { id } = request.params;
+
+    await knex("tasks").where({ id }).delete();
+    return response.status(202).json();
+  }
 }
 
 module.exports = TasksController;
