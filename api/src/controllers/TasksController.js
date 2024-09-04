@@ -1,5 +1,6 @@
 const AppError = require("../utils/AppError");
 const sqliteConnection = require("../database/sqlite");
+const knex = require("../database/knex");
 
 class TasksController {
   async create(request, response) {
@@ -16,10 +17,11 @@ class TasksController {
       throw new AppError("Título ja cadastrado");
     }
 
-    await database.run(
-      "INSERT INTO tasks (title, description, user_id) VALUES (?, ?, ?)",
-      [title, description, user_id]
-    );
+    await knex("tasks").insert({
+      title,
+      description,
+      user_id,
+    });
 
     return response.status(201).json();
   }
