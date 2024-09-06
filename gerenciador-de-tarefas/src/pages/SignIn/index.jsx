@@ -1,4 +1,5 @@
-import "./styles.css";
+import { Button } from "../../components/Button";
+import { Input } from "../../components/Input";
 
 export function SignIn() {
   return (
@@ -7,10 +8,10 @@ export function SignIn() {
       <h2>Login</h2>
 
       <form action="submit">
-        <input type="email" placeholder="Email" /> <br />
-        <input type="password" placeholder="Senha" /> <br />
-        <input type="submit" value="Entrar" /> <br />
-        <input type="button" value="Cadastre-se" />
+        <Input type="email" placeholder="Email" />
+        <Input type="password" placeholder="Senha" />
+        <Button value="Entrar" type="submit" />
+        <Button value="Cadastre-se" type="button" />
       </form>
     </div>
   );
