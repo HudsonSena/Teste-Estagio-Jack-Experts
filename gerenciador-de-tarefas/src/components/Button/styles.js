@@ -1,23 +1,27 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.button`
-    width: 100%;
-    background-color: ${({ theme }) => theme.COLORS.YELLOW};
-    color: ${({ theme }) => theme.COLORS.WHITE};
-    border-radius: .5rem;
-    border: none;
-    box-shadow: grey .1rem .1rem .1rem .1rem;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 500;
-    padding: .2rem;
+  width: 100%;
+  background-color: ${({ theme }) => theme.COLORS.YELLOW};
+  color: ${({ theme }) => theme.COLORS.WHITE};
+  border-radius: 0.5rem;
+  border: none;
+  box-shadow: grey 0.1rem 0.1rem 0.4rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 1.6rem;
+  padding: 0.8rem 1.2rem;
 
-    cursor: pointer;
+  cursor: pointer;
 
-    &:disabled {
-        opacity: 0.5;
-    };
+  text-shadow: 0.1rem 0.1rem 0.4rem grey;
+  -webkit-font-smoothing: antialiased;
 
-    &:hover {
-        scale: 1.02;
-    }
+  &:disabled {
+    opacity: 0.5;
+  }
+
+  &:hover {
+    scale: 1.02;
+  }
 `;

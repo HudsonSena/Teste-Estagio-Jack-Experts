@@ -1,11 +1,11 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.input`
-    width: 100%;
-    
-    border-radius: .5rem;
-    border: grey 1px solid;
-    padding: .3rem;
+  width: 100%;
 
-    font-family: "Montserrat", sans-serif;
+  border-radius: 0.5rem;
+  border: grey 1px solid;
+  padding: 0.8rem 1.2rem;
+
+  font-family: "Montserrat", sans-serif;
 `;

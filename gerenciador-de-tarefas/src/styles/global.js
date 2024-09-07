@@ -13,22 +13,30 @@ export default createGlobalStyle`
 
     body {
         background-color: ${({ theme }) => theme.COLORS.BACKGROUND_01};
-        padding: .5rem;
         font-family: "Montserrat", sans-serif;
         -webkit-font-smoothing: antialiased;
+
+        max-width: 80rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
     }
 
     h1 {
-        font-size: 2.4rem;
+        color: white;
+        font-size: 2rem;
+        text-shadow: 0.2rem 0.2rem 0.2rem grey;
     }
     h2 {
+        color: white;
         font-size: 1.8rem;
+        text-shadow: 0.2rem 0.2rem 0.2rem grey;
     }
     h3 {
+        color: white;
         font-size: 1.6rem;
-    }
-    p {
-        font-size: 1.2rem;
+        text-shadow: 0.2rem 0.2rem 0.2rem grey;
     }
 
     a {
