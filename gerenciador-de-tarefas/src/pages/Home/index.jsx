@@ -5,9 +5,22 @@ import { Task } from "../../components/Task";
 import { useNavigate } from "react-router-dom";
 import { Input } from "../../components/Input";
 import { ButtonText } from "../../components/ButtonText";
+import { useEffect, useState } from "react";
+import { api } from "../../services/api";
 
 export function Home() {
   const navigate = useNavigate();
+  const [search, setSearch] = useState("");
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    async function fetchSearch() {
+      const response = await api.get(`/tasks?title=${search}`);
+      setTasks(response.data);
+    }
+
+    fetchSearch();
+  }, [search]);
 
   function NewTask(event) {
     event.default;
@@ -25,20 +38,17 @@ export function Home() {
             <div className="btntasks">
               <ButtonText title="Tarefas" />
             </div>
-            <Input placeholder="Pesquisar Tarefa" />
+            <Input placeholder="Pesquisar Tarefa" onChange={e => setSearch(e.target.value)} />
+
             <section>
-              <Task
-                data={{
-                  title: "Tarefa 1",
-                  description: "Colocar a descrição no banco de dados",
-                }}
-              />
-              <Task
-                data={{
-                  title: "Tarefa 1",
-                  description: "Colocar a descrição no banco de dados",
-                }}
-              />
+              {
+                tasks.map(task => (
+                  <Task
+                    key={String(task.id)}
+                    data={task}
+                  />
+                ))
+              }
             </section>
           </Content>
         </main>

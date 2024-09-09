@@ -11,14 +11,16 @@ export const Container = styled.div`
     "content";
 `;
 
-export const Content = styled.div`
+export const Content = styled.main`
+  grid-area: content;
   height: auto;
 
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 2rem;
 
-  padding: 2rem 0rem;
+  padding: 1.6rem;
+  margin-top: 8rem;
 
   button {
     max-width: fit-content;

@@ -31,4 +31,8 @@ export const Container = styled.div`
     justify-content: flex-end;
     gap: 1rem;
   }
+
+  &:hover {
+    scale: 1.01;
+  }
 `;

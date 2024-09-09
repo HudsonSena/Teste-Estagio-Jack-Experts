@@ -5,8 +5,9 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  padding: 1.6rem;
 
-  div:nth-child(1) {
+  .header{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -18,5 +19,15 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1rem;
+  }
+
+  label {
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 1.6rem;
+
+    text-shadow: 0.2rem 0.2rem 0.3rem grey;
+    -webkit-font-smoothing: antialiased;
   }
 `;

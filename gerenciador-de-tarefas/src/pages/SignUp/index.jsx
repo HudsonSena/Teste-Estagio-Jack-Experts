@@ -20,7 +20,7 @@ export function SignUp() {
       .post("/users", { name, email, password })
       .then(() => {
         alert("Usuário cadastrado com sucesso!");
-        navigate("/login");
+        navigate("/");
       })
       .catch((error) => {
         if (error.response) {
@@ -52,7 +52,7 @@ export function SignUp() {
           onChange={(e) => setPassword(e.target.value)}
         />
         <Button title="Cadastrar" onClick={Register} />
-        <Link to={"/login"}>Voltar</Link>
+        <Link to={"/"}>Voltar</Link>
       </form>
     </Container>
   );

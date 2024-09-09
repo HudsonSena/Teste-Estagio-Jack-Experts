@@ -8,7 +8,7 @@ export function Header() {
     <Container>
       <div>
         <h2>Gerenciador de Tarefas</h2>
-        <h3>Bem vindo(a), {user.name}</h3>
+        <h3>Bem vindo(a), {user.name}!</h3>
       </div>
 
       <ButtonText title="Sair" onClick={signOut} />

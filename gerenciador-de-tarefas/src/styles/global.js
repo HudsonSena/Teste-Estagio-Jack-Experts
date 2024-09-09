@@ -17,7 +17,6 @@ export default createGlobalStyle`
         -webkit-font-smoothing: antialiased;
         max-width: 80rem;
         margin: auto;
-        padding: 1.6rem;
     }
 
     h1 {

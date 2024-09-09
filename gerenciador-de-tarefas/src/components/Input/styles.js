@@ -5,6 +5,9 @@ export const Container = styled.div`
 
   border-radius: 0.5rem;
   border: grey 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   input {
     width: 100%;
