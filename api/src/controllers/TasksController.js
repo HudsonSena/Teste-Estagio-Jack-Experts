@@ -31,19 +31,19 @@ class TasksController {
     const { title, description } = request.body;
     const { id } = request.params;
     const database = await sqliteConnection();
-    const task = await database.get("SELECT * FROM tasks WHERE ID = (?)", [id]);
+    const task = await database.get("SELECT * FROM tasks WHERE id = (?)", [id]);
 
     if (!task) {
       throw new AppError("Tarefa não encontrada");
     }
 
     const taskWithUpdatedTitle = await database.get(
-      "SELECT * FROM tasks WHERE title = (?) AND user_id = (?)",
-      [title, user_id]
+      "SELECT * FROM tasks WHERE title = (?) AND user_id = (?) AND id != (?)",
+      [title, user_id, id]
     );
 
-    if (taskWithUpdatedTitle && taskWithUpdatedTitle.id !== id) {
-      throw new AppError("Esta título ja esta em uso");
+    if (taskWithUpdatedTitle) {
+      throw new AppError("Este título já está em uso por outra tarefa");
     }
 
     task.title = title ?? task.title;

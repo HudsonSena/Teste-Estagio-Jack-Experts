@@ -31,24 +31,30 @@ export function Details() {
   }, [params.id]);
 
   async function UpdateTask() {
-    if (!setTitle | !setDescription) {
-      return alert("Deixou campos vazios");
+    if (!title.trim() || !description.trim()) {
+      return alert("O título ou a descrição não podem estar vazios!");
     }
 
-    api
-      .put(`/tasks/${params.id}`, { title, description })
-      .then(() => {
-        alert("Tarefa Atualizada!");
-        navigate("/");
-      })
-      .catch((error) => {
-        if (error.response) {
-          alert(error.response.data.message);
-        } else {
-          alert("Não foi possivel atualizar");
+    try {
+      if (data.title !== title) {
+        const response = await api.get(`/tasks?title=${title}`);
+        if (response.data.length > 0) {
+          return alert("Este título já existe. Escolha um título diferente.");
         }
-      });
+      }
+
+      await api.put(`/tasks/${params.id}`, { title, description });
+      alert("Tarefa Atualizada!");
+      navigate("/");
+    } catch (error) {
+      if (error.response) {
+        alert(error.response.data.message);
+      } else {
+        alert("Não foi possível atualizar a tarefa.");
+      }
+    }
   }
+
 
   async function DeleteTask() {
     const confirm = window.confirm("Deseja realmente deletar a tarefa?");
