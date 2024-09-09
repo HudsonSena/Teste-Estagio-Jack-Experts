@@ -1,15 +1,17 @@
-import { Link } from "react-router-dom";
 import { Container } from "./styles";
+import { ButtonText } from "../ButtonText";
+import { useAuth } from "../../hooks/auth";
 
 export function Header() {
+  const { signOut, user } = useAuth();
   return (
     <Container>
       <div>
         <h2>Gerenciador de Tarefas</h2>
-        <h3>Bem vindo(a), Hudson!</h3>
+        <h3>Bem vindo(a), {user.name}</h3>
       </div>
 
-      <Link to={"/login"}>Sair</Link>
+      <ButtonText title="Sair" onClick={signOut} />
     </Container>
   );
 }
