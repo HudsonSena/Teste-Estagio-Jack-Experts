@@ -24,4 +24,7 @@ export const Container = styled.button`
   &:hover {
     scale: 1.02;
   }
+  &:active {
+    scale: 1;
+  }
 `;

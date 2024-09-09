@@ -4,7 +4,7 @@ const knex = require("../database/knex");
 
 class TasksController {
   async create(request, response) {
-    const { user_id } = request.params;
+    const user_id = request.user.id;
     const { title, description } = request.body;
     const database = await sqliteConnection();
 
@@ -27,7 +27,8 @@ class TasksController {
   }
 
   async update(request, response) {
-    const { title, description, user_id } = request.body;
+    const user_id = request.user.id;
+    const { title, description } = request.body;
     const { id } = request.params;
     const database = await sqliteConnection();
     const task = await database.get("SELECT * FROM tasks WHERE ID = (?)", [id]);
@@ -64,12 +65,16 @@ class TasksController {
 
     const task = await knex("tasks").where({ id }).first();
 
-    return response.status(202).json({ ...task })
+    return response.status(202).json({ ...task });
   }
 
   async index(request, response) {
-    const { title, user_id } = request.query;
-    const tasks = await knex("tasks").where({ user_id }).whereLike("title", `%${title}%`).orderBy("title");
+    const { title } = request.query;
+    const user_id = request.user.id;
+    const tasks = await knex("tasks")
+      .where({ user_id })
+      .whereLike("title", `%${title}%`)
+      .orderBy("title");
 
     return response.status(202).json(tasks);
   }
