@@ -8,6 +8,7 @@
 - Para rodar o Front End só é necessário abrir a pasta "gerenciador-de-tarefas" pelo terminal e digitar: "npm rum dev".
 - Back e o Front ja estão integrados, só é necessário rodar as aplicações.
 - É necessário fazer teste de cadastro, da para cadastrar a mesma tarefa apenas adicionando um espaço a mais na frase. essas e outras coisa podem ser resolvidas no decorrer do desenvolvimento da aplicação.
+- Na Aplicação possui uma funcionalidade de concluir a tarefa. Apenas simbólica, o funcionamento ainda está para melhorar.
 
 # Tecnologias Aplicadas
 
@@ -15,12 +16,15 @@
 - CSS
 - JavaScript
 - React.js (Vite)
+- Node.js
 - Git e GitHub
-- express
-- knex
-- axios
-- cors
-- react-router-dom
+- Express
+- Knex
+- Axios
+- Cors
+- React Router Dom
+- JWT
+- Bcrypt
 
 # Contato
 
