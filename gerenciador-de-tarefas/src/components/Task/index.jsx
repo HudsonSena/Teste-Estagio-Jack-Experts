@@ -1,22 +1,36 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { ButtonConcluded } from "../ButtonConcluded";
 import { ButtonText } from "../ButtonText";
 import { Container } from "./styles";
 
-export function Task() {
+export function Task({ data, ...rest }) {
+  const [isConcluded, setIsConcluded] = useState(data.concluded || false); // Estado de conclusão inicial
+  const navigate = useNavigate();
+
+  function GoToDetails(event) {
+    event.preventDefault();
+    navigate(`/details/${data.id}`); // Use o ID da tarefa dinamicamente
+  }
+
+  function Concluded(event) {
+    event.preventDefault();
+    setIsConcluded(true); // Atualiza o estado de conclusão
+  }
+
   return (
-    <Container>
+    <Container {...rest}>
       <div>
-        <ButtonText title="Tarefa número 1" />
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae
-          minima dolore repellendus debitis deleniti voluptate praesentium
-          expedita consequatur mollitia quam. Accusamus totam necessitatibus
-          eaque ut voluptas quaerat at. Minima, eveniet!
-        </p>
+        <ButtonText title={data.title} onClick={GoToDetails} />
+        <p>{data.description}</p>
       </div>
       <div>
-        <ButtonText title="Atualizar" />
-        <ButtonText title="Deletar" />
-        <ButtonText title="Concluir" />
+        {/* Altera o estado de "Concluído" ao clicar no botão */}
+        <ButtonConcluded
+          title={isConcluded ? "Concluído" : "Concluir"}
+          onClick={Concluded}
+          disabled={isConcluded} // Desabilita o botão após ser concluído
+        />
       </div>
     </Container>
   );

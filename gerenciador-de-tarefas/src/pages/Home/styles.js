@@ -12,20 +12,16 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-  width: 100%;
   height: auto;
 
   display: flex;
   flex-direction: column;
   gap: 3rem;
 
-  padding: 2rem;
+  padding: 2rem 0rem;
 
-  nav {
-    max-width: max-content;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+  button {
+    max-width: fit-content;
   }
 
   section {

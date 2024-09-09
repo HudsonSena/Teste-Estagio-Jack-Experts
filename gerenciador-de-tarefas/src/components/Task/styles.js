@@ -10,7 +10,6 @@ export const Container = styled.div`
   border-radius: 0.5rem;
 
   gap: 1rem;
-  cursor: pointer;
 
   p {
     font-size: 1.2rem;
@@ -18,19 +17,17 @@ export const Container = styled.div`
     color: ${({ theme }) => theme.COLORS.GREY_02};
   }
 
-  &:hover {
-    scale: 1.01;
-  }
-
-  :nth-child(1) {
+  div:nth-child(1) {
     display: flex;
     flex-direction: column;
     gap: 1rem;
   }
 
-  :nth-child(2) {
+  div:nth-child(2) {
+    border-top: 0.1rem solid grey;
+    padding-top: 0.5rem;
     display: flex;
-    align-items: center;
+    flex-direction: row;
     justify-content: flex-end;
     gap: 1rem;
   }

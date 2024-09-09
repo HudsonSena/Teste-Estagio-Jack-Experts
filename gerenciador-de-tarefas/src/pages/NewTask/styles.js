@@ -1,23 +1,22 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  max-width: 60rem;
   margin: auto;
-
-  height: 100vh;
-  padding: 10rem 2rem;
-
   display: flex;
   flex-direction: column;
-  align-items: center;
-
   gap: 2rem;
 
+  div:nth-child(1) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 0.1rem solid grey;
+    padding-bottom: 1.6rem;
+  }
+
   form {
-    width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 1rem;
   }
 `;

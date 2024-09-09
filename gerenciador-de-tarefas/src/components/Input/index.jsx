@@ -1,9 +1,9 @@
-import { Container } from './styles';
+import { Container } from "./styles";
 
 export function Input({ ...rest }) {
-    return (
-        <Container type="text" {...rest}>
-        </Container>
-    )
-
+  return (
+    <Container>
+      <input {...rest} />
+    </Container>
+  );
 }

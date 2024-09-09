@@ -15,12 +15,9 @@ export default createGlobalStyle`
         background-color: ${({ theme }) => theme.COLORS.BACKGROUND_01};
         font-family: "Montserrat", sans-serif;
         -webkit-font-smoothing: antialiased;
-
         max-width: 80rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
         margin: auto;
+        padding: 1.6rem;
     }
 
     h1 {
@@ -41,5 +38,22 @@ export default createGlobalStyle`
 
     a {
         text-decoration: none;
+        color: white;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        font-size: 1.6rem;
+
+        cursor: pointer;
+
+        text-shadow: 0.2rem 0.2rem 0.3rem grey;
+        -webkit-font-smoothing: antialiased;
+
+        &:disabled {
+            opacity: 0.5;
+        }
+
+        &:hover {
+            scale: 1.02;
+        }
     }
 `;

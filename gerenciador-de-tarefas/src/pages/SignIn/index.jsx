@@ -1,20 +1,26 @@
 import { Container } from "./styles";
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
-import { ButtonText } from "../../components/ButtonText";
+import { Link, useNavigate } from "react-router-dom";
 
 export function SignIn() {
+  const navigate = useNavigate();
+
+  function Login(event) {
+    event.default;
+    navigate("/");
+  }
   return (
     <Container>
       <h1>Gerenciador de Tarefas</h1>
 
       <h2>Login</h2>
 
-      <form action="submit">
+      <form>
         <Input type="email" placeholder="Email" />
         <Input type="password" placeholder="Senha" />
-        <Button title="Entrar" type="submit" />
-        <ButtonText title="Cadastre-se" type="button" />
+        <Button title="Entrar" onClick={Login} />
+        <Link to={"/register"}>Cadastre-se</Link>
       </form>
     </Container>
   );
